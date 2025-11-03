@@ -41,7 +41,7 @@ void shuffle_goats(list<Goat> &trip);
 // returns: nothing
 void reverse_goats(list<Goat> &trip);
 
-// Uses std::transform to increase the age of all the goats by 1
+// Uses std::for_each to increase the age of all the goats by 1
 // arguments: an array of Goat objects
 // returns: nothing
 void age_goats(list<Goat> &trip);
@@ -150,7 +150,7 @@ int main_menu() {
 	cout << "[5] Replace goat\n"; //replace
 	cout << "[6] Shuffle goats\n"; //shuffle
 	cout << "[7] Reverse goats\n"; //reverse
-	cout << "[8] Age all goats\n"; //transform
+	cout << "[8] Age all goats\n"; //for_each
 	cout << "[9] Get number of goats\n"; //accumulate
 	cout << "[10] Find out if color of goat exists\n"; //any_of
 	cout << "[11] Delete all goats\n"; //clear
@@ -208,6 +208,16 @@ int select_goat(list<Goat> trp) {
 }
 
 void find_goat_by_name(list<Goat> &trip) {
+	// TODO: fix
+	// string name;
+	// cout << "Enter the name of the goat you're searching for: ";
+	// cin >> name;
+	// auto it = find(trip.begin(), trip.end(), [](const Goat& goat) {
+	// 	return goat.get_name() == name;
+	// });
+	// if (it != trip.end()) {
+	// 	//
+	// }
 }
 
 void replace_goat(list<Goat> &trip) {
@@ -220,12 +230,14 @@ void reverse_goats(list<Goat> &trip) {
 }
 
 void age_goats(list<Goat> &trip) {
+		// TODO: Fix
+	//for_each(trip.begin(), trip.end(), []);
 }
 
 void get_num_goats(list<Goat> &trip) {
 	// TODO: Fix
-	// int sum = accumulate(trip.begin(), trip.end(), 0);
-	// cout << "Total number of goats: " << sum << endl;
+	int numGoats = accumulate(trip.begin(), trip.end(), 0, []());
+	cout << "Total number of goats: " << goats << endl;
 }
 
 void check_for_goat_color(list<Goat> &trip) {
