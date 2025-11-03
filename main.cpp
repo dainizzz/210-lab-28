@@ -235,9 +235,10 @@ void age_goats(list<Goat> &trip) {
 }
 
 void get_num_goats(list<Goat> &trip) {
-	// TODO: Fix
-	int numGoats = accumulate(trip.begin(), trip.end(), 0, []());
-	cout << "Total number of goats: " << goats << endl;
+	int numGoats = accumulate(trip.begin(), trip.end(), 0, [](int sum, const Goat& goat) {
+		return sum + 1;
+	});
+	cout << "Total number of goats: " << numGoats << endl;
 }
 
 void check_for_goat_color(list<Goat> &trip) {
