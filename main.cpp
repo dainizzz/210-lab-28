@@ -222,11 +222,13 @@ void find_goat_by_name(list<Goat> &trip) {
 }
 
 void replace_goat(list<Goat> &trip) {
+	// TODO: fix
+	//replace(trip.begin(), trip.end(), newGoat, Goat)
 }
 
 void shuffle_goats(list<Goat> &trip) {
 	// TODO: fix
-	//shuffle(trip.begin(), trip.end(), default_random_engine());
+	shuffle(trip.begin(), trip.end(), default_random_engine());
 }
 
 void reverse_goats(list<Goat> &trip) {
