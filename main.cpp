@@ -32,10 +32,10 @@ void find_goat_by_name(list<Goat> &trip);
 // returns: nothing
 void replace_goat(list<Goat> &trip);
 
-// Uses std::shuffle to shuffle the list of Goat objects
+// Uses std::fill to replace the list of Goat objects with a new random Goat object
 // arguments: an array of Goat objects
 // returns: nothing
-void shuffle_goats(list<Goat> &trip);
+void replace_all_goats(list<Goat> &trip, string[], string[]);
 
 // Uses std::reverse to reverse the list of Goat objects
 // arguments: an array of Goat objects
@@ -115,7 +115,7 @@ int main() {
 				replace_goat(trip);
 				break;
 			case 6:
-				shuffle_goats(trip);
+				replace_all_goats(trip);
 				break;
 			case 7:
 				reverse_goats(trip);
@@ -149,7 +149,7 @@ int main_menu() {
 	cout << "[3] List goats\n";
 	cout << "[4] Find a goat by name\n"; // find
 	cout << "[5] Replace goat\n"; //replace
-	cout << "[6] Shuffle goats\n"; //shuffle
+	cout << "[6] Replace all goats with a new goat\n"; //shuffle
 	cout << "[7] Reverse goats\n"; //reverse
 	cout << "[8] Age all goats\n"; //for_each
 	cout << "[9] Get number of goats\n"; //accumulate
@@ -226,9 +226,15 @@ void replace_goat(list<Goat> &trip) {
 	//replace(trip.begin(), trip.end(), newGoat, Goat)
 }
 
-void shuffle_goats(list<Goat> &trip) {
-	// TODO: fix
-	shuffle(trip.begin(), trip.end(), default_random_engine());
+void replace_all_goats(list<Goat> &trip) {
+	void add_goat(list<Goat> &trip, string nms[], string cls[]) {
+		cout << "ADD A GOAT\n";
+		int age = rand() % MAX_AGE;
+		string nm = nms[rand() % SZ_NAMES];
+		string cl = cls[rand() % SZ_COLORS];
+		Goat tmp(nm, age, cl);
+	Goat newGoat;
+	fill(trip.begin(), trip.end(),  newGoat);
 }
 
 void reverse_goats(list<Goat> &trip) {
