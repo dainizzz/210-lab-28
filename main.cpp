@@ -1,3 +1,6 @@
+// COMSC-210 | Lab 28 | Dainiz Almazan
+// IDE used: CLion
+
 #include <iostream>
 #include <fstream>
 #include <iomanip>
