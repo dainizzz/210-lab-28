@@ -234,8 +234,9 @@ void reverse_goats(list<Goat> &trip) {
 }
 
 void age_goats(list<Goat> &trip) {
-		// TODO: Fix
-	//for_each(trip.begin(), trip.end(), []);
+	for_each(trip.begin(), trip.end(), [](Goat& goat) {
+		goat.set_age(goat.get_age() + 1);
+	});
 }
 
 void get_num_goats(list<Goat> &trip) {
