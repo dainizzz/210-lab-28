@@ -33,7 +33,7 @@ void find_goat_by_name(list<Goat> &trip);
 void replace_goat(list<Goat> &trip);
 
 // Uses std::fill to replace the list of Goat objects with a new random Goat object
-// arguments: an array of Goat objects
+// arguments: an array of Goat objects, a string array of names, a string array of colors
 // returns: nothing
 void replace_all_goats(list<Goat> &trip, string[], string[]);
 
@@ -61,6 +61,11 @@ void check_for_goat_color(list<Goat> &trip);
 // arguments: an array of Goat objects
 // returns: nothing
 void delete_goats(list<Goat> &trip);
+
+// Creates a Goat object with randomly generated values
+// arguments: a string array of names, a string array of colors
+// returns: a Goat object
+Goat createRandomGoat(string [], string[]);
 
 int main_menu();
 
@@ -115,7 +120,7 @@ int main() {
 				replace_goat(trip);
 				break;
 			case 6:
-				replace_all_goats(trip);
+				replace_all_goats(trip, names, colors);
 				break;
 			case 7:
 				reverse_goats(trip);
@@ -226,14 +231,8 @@ void replace_goat(list<Goat> &trip) {
 	//replace(trip.begin(), trip.end(), newGoat, Goat)
 }
 
-void replace_all_goats(list<Goat> &trip) {
-	void add_goat(list<Goat> &trip, string nms[], string cls[]) {
-		cout << "ADD A GOAT\n";
-		int age = rand() % MAX_AGE;
-		string nm = nms[rand() % SZ_NAMES];
-		string cl = cls[rand() % SZ_COLORS];
-		Goat tmp(nm, age, cl);
-	Goat newGoat;
+void replace_all_goats(list<Goat> &trip, string names[], string colors[]) {
+	Goat newGoat = createRandomGoat(names, colors);
 	fill(trip.begin(), trip.end(),  newGoat);
 }
 
@@ -270,4 +269,12 @@ void check_for_goat_color(list<Goat> &trip) {
 
 void delete_goats(list<Goat> &trip) {
 	trip.clear();
+}
+
+Goat createRandomGoat(string names[], string colors[]) {
+	int age = rand() % MAX_AGE;
+	string name = names[rand() % SZ_NAMES];
+	string color = colors[rand() % SZ_COLORS];
+	Goat temp(name, age, color);
+	return temp;
 }
