@@ -18,6 +18,46 @@ void add_goat(list<Goat> &trip, string [], string []);
 
 void display_trip(list<Goat> trip);
 
+// Uses std::find to find a goat by name and display its info
+// arguments: an array of Goat objects
+// returns: nothing
+void find_goat_by_name(list<Goat> &trip);
+
+// Uses std::replace to replace a Goat object with another Goat object
+// arguments: an array of Goat objects
+// returns: nothing
+void replace_goat(list<Goat> &trip);
+
+// Uses std::shuffle to shuffle the list of Goat objects
+// arguments: an array of Goat objects
+// returns: nothing
+void shuffle_goats(list<Goat> &trip);
+
+// Uses std::reverse to reverse the list of Goat objects
+// arguments: an array of Goat objects
+// returns: nothing
+void reverse_goats(list<Goat> &trip);
+
+// Uses std::transform to increase the age of all the goats by 1
+// arguments: an array of Goat objects
+// returns: nothing
+void age_goats(list<Goat> &trip);
+
+// Uses std::accumulate to get the sum of all Goat objects in the array and display it
+// arguments: an array of Goat objects
+// returns: nothing
+void get_num_goats(list<Goat> &trip);
+
+// Uses std::any_of to check if a Goat object with the provided color exists and displays the result
+// arguments: an array of Goat objects
+// returns: nothing
+void check_for_goat_color(list<Goat> &trip);
+
+// Uses std::clear to delete all the Goat objects in the array
+// arguments: an array of Goat objects
+// returns: nothing
+void delete_goats(list<Goat> &trip);
+
 int main_menu();
 
 int main() {
@@ -96,14 +136,13 @@ int main_menu() {
 	cout << "[1] Add a goat\n";
 	cout << "[2] Delete a goat\n";
 	cout << "[3] List goats\n";
-	// TODO: Implement
-	cout << "[4] Search for a goat\n"; // find
+	cout << "[4] Search for goat by name\n"; // find
 	cout << "[5] Replace goat\n"; //replace
 	cout << "[6] Shuffle goats\n"; //shuffle
 	cout << "[7] Reverse goats\n"; //reverse
 	cout << "[8] Age all goats\n"; //transform
 	cout << "[9] Get number of goats\n"; //accumulate
-	cout << "[10] x\n";
+	cout << "[10] Find out if color of goat exists\n"; //any_of
 	cout << "[11] Delete all goats\n"; //clear
 	cout << "[12] Quit\n";
 	cout << "Choice --> ";
