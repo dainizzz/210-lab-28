@@ -22,15 +22,15 @@ void add_goat(list<Goat> &trip, string [], string []);
 
 void display_trip(list<Goat> trip);
 
-// Uses std::find to find a goat by name and display its info
+// Uses std::find_if to find a goat by name and display its info
 // arguments: an array of Goat objects
 // returns: nothing
 void find_goat_by_name(list<Goat> &trip);
 
-// Uses std::replace to replace a Goat object with another Goat object
-// arguments: an array of Goat objects
+// Uses std::replace to replace a Goat object with a new, random Goat object
+// arguments: an array of Goat objects, a string array of names, a string array of colors
 // returns: nothing
-void replace_goat(list<Goat> &trip);
+void replace_goat(list<Goat> &trip, string[], string[]);
 
 // Uses std::fill to replace the list of Goat objects with a new random Goat object
 // arguments: an array of Goat objects, a string array of names, a string array of colors
@@ -117,7 +117,7 @@ int main() {
 				find_goat_by_name(trip);
 				break;
 			case 5:
-				replace_goat(trip);
+				replace_goat(trip, names, colors);
 				break;
 			case 6:
 				replace_all_goats(trip, names, colors);
@@ -214,20 +214,22 @@ int select_goat(list<Goat> trp) {
 }
 
 void find_goat_by_name(list<Goat> &trip) {
-	// TODO: fix
-	// string name;
-	// cout << "Enter the name of the goat you're searching for: ";
-	// cin >> name;
-	// auto it = find(trip.begin(), trip.end(), [](const Goat& goat) {
-	// 	return goat.get_name() == name;
-	// });
-	// if (it != trip.end()) {
-	// 	//
-	// }
+
+	string name;
+	cout << "Enter the name of the goat you're searching for: ";
+	cin >> name;
+	auto it = find_if(trip.begin(), trip.end(), [name](const Goat& goat) {
+		return goat.get_name() == name;
+	});
+	if (it != trip.end()) {
+		cout << "Found " << it->get_name() << " (" << it->get_age() << ", " << it->get_color() << ')' << endl;
+	}else
+		cout << name << " not found." << endl;
 }
 
-void replace_goat(list<Goat> &trip) {
+void replace_goat(list<Goat> &trip, string names[], string colors[]) {
 	// TODO: fix
+	Goat newGoat = createRandomGoat(names, colors);
 	//replace(trip.begin(), trip.end(), newGoat, Goat)
 }
 
