@@ -27,10 +27,10 @@ void display_trip(list<Goat> trip);
 // returns: nothing
 void find_goat_by_name(list<Goat> &trip);
 
-// Uses std::replace to replace a Goat object with a new, random Goat object
-// arguments: an array of Goat objects, a string array of names, a string array of colors
+// Uses std::erase to remove all Goat objects whose age is greater than the specifed value
+// arguments: an array of Goat objects
 // returns: nothing
-void replace_goat(list<Goat> &trip, string[], string[]);
+void remove_goats_by_age(list<Goat> &trip);
 
 // Uses std::fill to replace the list of Goat objects with a new random Goat object
 // arguments: an array of Goat objects, a string array of names, a string array of colors
@@ -117,7 +117,7 @@ int main() {
 				find_goat_by_name(trip);
 				break;
 			case 5:
-				replace_goat(trip, names, colors);
+				remove_goats_by_age(trip);
 				break;
 			case 6:
 				replace_all_goats(trip, names, colors);
@@ -152,14 +152,14 @@ int main_menu() {
 	cout << "[1] Add a goat\n";
 	cout << "[2] Delete a goat\n";
 	cout << "[3] List goats\n";
-	cout << "[4] Find a goat by name\n"; // find
-	cout << "[5] Replace goat\n"; //replace
-	cout << "[6] Replace all goats with a new goat\n"; //shuffle
-	cout << "[7] Reverse goats\n"; //reverse
-	cout << "[8] Age all goats\n"; //for_each
-	cout << "[9] Get number of goats\n"; //accumulate
-	cout << "[10] Find out if color of goat exists\n"; //any_of
-	cout << "[11] Delete all goats\n"; //clear
+	cout << "[4] Find a goat by name\n";
+	cout << "[5] Remove goats older than an age\n";
+	cout << "[6] Replace all goats with a new goat\n";
+	cout << "[7] Reverse goats\n";
+	cout << "[8] Age all goats\n";
+	cout << "[9] Get number of goats\n";
+	cout << "[10] Find out if color of goat exists\n";
+	cout << "[11] Delete all goats\n";
 	cout << "[12] Quit\n";
 	cout << "Choice --> ";
 	int choice;
@@ -214,7 +214,6 @@ int select_goat(list<Goat> trp) {
 }
 
 void find_goat_by_name(list<Goat> &trip) {
-
 	string name;
 	cout << "Enter the name of the goat you're searching for: ";
 	cin >> name;
@@ -227,10 +226,13 @@ void find_goat_by_name(list<Goat> &trip) {
 		cout << name << " not found." << endl;
 }
 
-void replace_goat(list<Goat> &trip, string names[], string colors[]) {
-	// TODO: fix
-	Goat newGoat = createRandomGoat(names, colors);
-	//replace(trip.begin(), trip.end(), newGoat, Goat)
+void remove_goats_by_age(list<Goat> &trip) {
+	int age;
+	cout << "Enter the age to use for determining which goats to remove: ";
+	cin >> age;
+	trip.erase(remove_if(trip.begin(), trip.end(), [age](const Goat& goat) {
+		return goat.get_age() > age;
+	}));
 }
 
 void replace_all_goats(list<Goat> &trip, string names[], string colors[]) {
