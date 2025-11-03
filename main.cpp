@@ -1,10 +1,13 @@
 // COMSC-210 | Lab 28 | Dainiz Almazan
 // IDE used: CLion
 
+#include <algorithm>
 #include <iostream>
 #include <fstream>
 #include <iomanip>
 #include <list>
+#include <numeric>
+
 #include "Goat.h"
 using namespace std;
 
@@ -220,9 +223,23 @@ void age_goats(list<Goat> &trip) {
 }
 
 void get_num_goats(list<Goat> &trip) {
+	// TODO: Fix
+	// int sum = accumulate(trip.begin(), trip.end(), 0);
+	// cout << "Total number of goats: " << sum << endl;
 }
 
 void check_for_goat_color(list<Goat> &trip) {
+	string color;
+	cout << "Enter the goat color to search for: ";
+	cin >> color;
+	bool found = any_of(trip.begin(), trip.end(),[color](Goat goat) {
+		return goat.get_color() == color;
+	});
+
+	if (found)
+		cout << "Goat color " << color << " found!\n";
+	else
+		cout << "Goat color " << color << " found!\n";
 }
 
 void delete_goats(list<Goat> &trip) {
