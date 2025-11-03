@@ -22,47 +22,47 @@ void add_goat(list<Goat> &trip, string [], string []);
 
 void display_trip(list<Goat> trip);
 
-// Uses std::find_if to find a goat by name and display its info
+// find_goat_by_name() uses std::find_if to find a goat by name and display its info
 // arguments: an array of Goat objects
 // returns: nothing
 void find_goat_by_name(list<Goat> &trip);
 
-// Uses std::erase to remove all Goat objects whose age is greater than the specifed value
+// change_color_of_all_goats() uses std::transform to change the color of all Goat objects to the specified color
 // arguments: an array of Goat objects
 // returns: nothing
-void remove_goats_by_age(list<Goat> &trip);
+void change_color_of_all_goats(list<Goat> &trip);
 
-// Uses std::fill to replace the list of Goat objects with a new random Goat object
+// replace_all_goats() uses std::fill to replace the list of Goat objects with a new random Goat object
 // arguments: an array of Goat objects, a string array of names, a string array of colors
 // returns: nothing
 void replace_all_goats(list<Goat> &trip, string[], string[]);
 
-// Uses std::reverse to reverse the list of Goat objects
+// reverse_goats() uses std::reverse to reverse the list of Goat objects
 // arguments: an array of Goat objects
 // returns: nothing
 void reverse_goats(list<Goat> &trip);
 
-// Uses std::for_each to increase the age of all the goats by 1
+// age_goats() uses std::for_each to increase the age of all the goats by 1
 // arguments: an array of Goat objects
 // returns: nothing
 void age_goats(list<Goat> &trip);
 
-// Uses std::accumulate to get the sum of all Goat objects in the array and display it
+// get_num_goats() uses std::accumulate to get the sum of all Goat objects in the array and display it
 // arguments: an array of Goat objects
 // returns: nothing
 void get_num_goats(list<Goat> &trip);
 
-// Uses std::any_of to check if a Goat object with the provided color exists and displays the result
+// check_for_goat_color() uses std::any_of to check if a Goat object with the provided color exists and displays the result
 // arguments: an array of Goat objects
 // returns: nothing
 void check_for_goat_color(list<Goat> &trip);
 
-// Uses std::clear to delete all the Goat objects in the array
+// delete_goats() uses std::clear to delete all the Goat objects in the array
 // arguments: an array of Goat objects
 // returns: nothing
 void delete_goats(list<Goat> &trip);
 
-// Creates a Goat object with randomly generated values
+// createRandomGoat() creates a Goat object with randomly generated values
 // arguments: a string array of names, a string array of colors
 // returns: a Goat object
 Goat createRandomGoat(string [], string[]);
@@ -117,7 +117,7 @@ int main() {
 				find_goat_by_name(trip);
 				break;
 			case 5:
-				remove_goats_by_age(trip);
+				change_color_of_all_goats(trip);
 				break;
 			case 6:
 				replace_all_goats(trip, names, colors);
@@ -153,10 +153,10 @@ int main_menu() {
 	cout << "[2] Delete a goat\n";
 	cout << "[3] List goats\n";
 	cout << "[4] Find a goat by name\n";
-	cout << "[5] Remove goats older than an age\n";
-	cout << "[6] Replace all goats with a new goat\n";
-	cout << "[7] Reverse goats\n";
-	cout << "[8] Age all goats\n";
+	cout << "[5] Change color of all goats\n";
+	cout << "[6] Replace all goats with a new, random goat\n";
+	cout << "[7] Reverse goat order\n";
+	cout << "[8] Age all goats by 1\n";
 	cout << "[9] Get number of goats\n";
 	cout << "[10] Find out if color of goat exists\n";
 	cout << "[11] Delete all goats\n";
@@ -226,13 +226,13 @@ void find_goat_by_name(list<Goat> &trip) {
 		cout << name << " not found." << endl;
 }
 
-void remove_goats_by_age(list<Goat> &trip) {
-	int age;
-	cout << "Enter the age to use for determining which goats to remove: ";
-	cin >> age;
-	trip.erase(remove_if(trip.begin(), trip.end(), [age](const Goat& goat) {
-		return goat.get_age() > age;
-	}));
+void change_color_of_all_goats(list<Goat> &trip) {
+	string color;
+	cout << "Enter the color you want to change all the goats to: ";
+	cin >> color;
+	transform(trip.begin(), trip.end(), trip.begin(), [color](Goat& goat) {
+		goat.set_color(color); return goat;
+	});
 }
 
 void replace_all_goats(list<Goat> &trip, string names[], string colors[]) {
