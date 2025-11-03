@@ -7,6 +7,7 @@
 #include <iomanip>
 #include <list>
 #include <numeric>
+#include <random>
 
 #include "Goat.h"
 using namespace std;
@@ -224,9 +225,12 @@ void replace_goat(list<Goat> &trip) {
 }
 
 void shuffle_goats(list<Goat> &trip) {
+	// TODO: fix
+	//shuffle(trip.begin(), trip.end(), default_random_engine());
 }
 
 void reverse_goats(list<Goat> &trip) {
+	reverse(trip.begin(), trip.end());
 }
 
 void age_goats(list<Goat> &trip) {
