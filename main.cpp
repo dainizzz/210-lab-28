@@ -105,20 +105,28 @@ int main() {
 				display_trip(trip);
 				break;
 			case 4:
+				find_goat_by_name(trip);
 				break;
 			case 5:
+				replace_goat(trip);
 				break;
 			case 6:
+				shuffle_goats(trip);
 				break;
 			case 7:
+				reverse_goats(trip);
 				break;
 			case 8:
+				age_goats(trip);
 				break;
 			case 9:
+				get_num_goats(trip);
 				break;
 			case 10:
+				check_for_goat_color(trip);
 				break;
 			case 11:
+				delete_goats(trip);
 				break;
 			default:
 				cout << "Invalid selection.\n";
@@ -126,7 +134,6 @@ int main() {
 		}
 		sel = main_menu();
 	}
-
 
 	return 0;
 }
@@ -136,7 +143,7 @@ int main_menu() {
 	cout << "[1] Add a goat\n";
 	cout << "[2] Delete a goat\n";
 	cout << "[3] List goats\n";
-	cout << "[4] Search for goat by name\n"; // find
+	cout << "[4] Find a goat by name\n"; // find
 	cout << "[5] Replace goat\n"; //replace
 	cout << "[6] Shuffle goats\n"; //shuffle
 	cout << "[7] Reverse goats\n"; //reverse
@@ -195,4 +202,29 @@ int select_goat(list<Goat> trp) {
 		cin >> input;
 	}
 	return input;
+}
+
+void find_goat_by_name(list<Goat> &trip) {
+}
+
+void replace_goat(list<Goat> &trip) {
+}
+
+void shuffle_goats(list<Goat> &trip) {
+}
+
+void reverse_goats(list<Goat> &trip) {
+}
+
+void age_goats(list<Goat> &trip) {
+}
+
+void get_num_goats(list<Goat> &trip) {
+}
+
+void check_for_goat_color(list<Goat> &trip) {
+}
+
+void delete_goats(list<Goat> &trip) {
+	trip.clear();
 }
